@@ -46,7 +46,7 @@ const Main: FC = () => {
   const [swapInDirection, setSwapInDirection] = useState<boolean>(false); // IN: RAY to SOL; OUT: SOL to RAY
 
   useEffect(() => {
-    console.log("p", publicKey?.toBase58(), process.env.RPC_ENDPOINT);
+    console.log("p", publicKey?.toBase58());
     const getAccountInfo = async () => {
       if (publicKey !== null) {
         const balance = await connection.getBalance(publicKey); // get SOL balance

@@ -26,7 +26,7 @@ const App: FC = () => {
 
     // You can also provide a custom RPC endpoint.
     // const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-    const endpoint = "https://103.50.32.83:8899"; // mainnet has rate limit so use Project Serum-hosted api node
+    const endpoint = process.env.RPC_ENDPOINT || "https://103.50.32.83:8899"; // mainnet has rate limit so use Project Serum-hosted api node
 
     // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
     // Only the wallets you configure here will be compiled into your application, and only the dependencies
