@@ -5,6 +5,8 @@ const prod = process.env.NODE_ENV === 'production';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+require('dotenv').config()
+
 module.exports = {
     mode: prod ? 'production' : 'development',
     entry: './src/index.tsx',
@@ -39,6 +41,11 @@ module.exports = {
             // Thanks to https://stackoverflow.com/a/65018686/14239942
             process: 'process/browser'
         }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                RPC_ENDPOINT: JSON.stringify(process.env.RPC_ENDPOINT),
+            },
+         })
     ],
     resolve: {
         fallback: {

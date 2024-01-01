@@ -46,9 +46,12 @@ const Main: FC = () => {
   const [swapInDirection, setSwapInDirection] = useState<boolean>(false); // IN: RAY to SOL; OUT: SOL to RAY
 
   useEffect(() => {
+    console.log("p", publicKey?.toBase58(), process.env.RPC_ENDPOINT);
     const getAccountInfo = async () => {
       if (publicKey !== null) {
         const balance = await connection.getBalance(publicKey); // get SOL balance
+        console.log("balance", balance)
+        console.log("publicKey", publicKey.toBase58())
         setSolBalance(balance / LAMPORTS_PER_SOL);
 
         const tokenAccs = await getTokenAccountsByOwner(connection, publicKey as PublicKey); // get all token accounts
